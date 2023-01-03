@@ -9,9 +9,10 @@ export default class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <NavBar />
+        <NavBar />
           <Routes>
-            <Route path="/" key="general" pageSize={6} country="in" category="home" element={<News/>}/>
+            <Route path="/" element={<NavBar />}/>
+            <Route path="/" key="general" pageSize={6} country="in" category="home" element={<News />}/>
             <Route path="/business" key="business" pageSize={6} country="in" category="business" element={<News/>}/>
             <Route path="/entertainment" key="entertainment" pageSize={6} country="in" category="entertainment" element={<News/>}/>
             <Route path="/general" key="general" pageSize={6} country="in" category="general" element={<News/>}/>
