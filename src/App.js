@@ -13,10 +13,10 @@ export default class App extends Component {
         <NavBar />
           <Routes>
             {/* <Route path="/" element={<NavBar />}/> */}
-            <Route path="/" key="general" pageSize={this.pageSize} country="in" category="home" element={<News />}/>
+            <Route path="/general" key="general" pageSize={this.pageSize} country="in" category="general" element={<News />}/>
             <Route path="/business" key="business" pageSize={this.pageSize} country="in" category="business" element={<News/>}/>
             <Route path="/entertainment" key="entertainment" pageSize={this.pageSize} country="in" category="entertainment" element={<News/>}/>
-            <Route path="/general" key="general" pageSize={this.pageSize} country="in" category="general" element={<News/>}/>
+            {/* <Route path="/general" key="general" pageSize={this.pageSize} country="in" category="general" element={<News/>}/> */}
             <Route path="/health" key="health" pageSize={this.pageSize} country="in" category="health" element={<News/>}/>
             <Route path="/science" key="science" pageSize={this.pageSize} country="in" category="science" element={<News/>}/>
             <Route path="/sports" key="sports" pageSize={this.pageSize} country="in" category="sports" element={<News/>}/>

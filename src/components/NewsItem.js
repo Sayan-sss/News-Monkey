@@ -19,7 +19,7 @@ export class NewsItem extends Component {
           <img
             src={
               !imageUrl
-                ? "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGVycm9yfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEfV1G7vlRB9TwaHaWzlqg3v63R4KPkID-pw&usqp=CAU"
                 : imageUrl
             }
             className="card-img-top"

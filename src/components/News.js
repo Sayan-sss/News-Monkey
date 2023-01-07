@@ -7,7 +7,8 @@ export class News extends Component {
   static defaultProps = {
     country: "in",
     pageSize: 6,
-    category: "business",
+    // category: "business",
+    category: window.location.pathname.substring(1),
   };
 
   static propTypes = {
@@ -16,14 +17,21 @@ export class News extends Component {
     category: PropTypes.string,
   };
 
-  constructor() {
-    super();
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  constructor(props) {
+    super(props);
     this.state = {
       articles: [],
       loading: false,
       page: 1,
       category: window.location.pathname.substring(1),
     };
+    document.title = `${this.capitalizeFirstLetter(
+      this.props.category
+    )} - NewsMonkey`;
   }
 
   async updateNews() {
@@ -35,13 +43,16 @@ export class News extends Component {
       articles: parseData.articles,
       totalResults: parseData.totalResults,
       loading: false,
+      // category: this.props.category
     });
   }
 
   async componentDidMount() {
     this.updateNews();
   }
+
   componentDidUpdate(prevProps) {
+    // this.setState({ category: this.props.category });
     if (prevProps.category !== this.state.category) {
       this.setState({ category: this.props.category });
     }
@@ -61,7 +72,9 @@ export class News extends Component {
     return (
       <div className="container my-3">
         <h1 className="text-center" style={{ margin: "40px" }}>
-          NewsMonkey - top Headlines
+          NewsMonkey - top {this.capitalizeFirstLetter(
+      this.props.category
+    )} Headlines
         </h1>
         {this.state.loading && <Spinner />}
         <div className="row">
