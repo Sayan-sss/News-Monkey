@@ -8,8 +8,6 @@ export class News extends Component {
   static defaultProps = {
     country: "in",
     pageSize: 6,
-    // category: "business",
-    category: window.location.pathname.substring(1),
   };
 
   static propTypes = {
@@ -37,28 +35,26 @@ export class News extends Component {
   }
 
   async updateNews() {
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.state.category}&apiKey=7d32d82497b643fe97d8cead039f3ed9
     &page=${this.state.page}&pageSize=${this.props.pageSize}`;
     // apiKey=7d32d82497b643fe97d8cead039f3ed9
     this.setState({ loading: true });
     let data = await fetch(url);
+    this.props.setProgress(30);
     let parseData = await data.json();
+    this.props.setProgress(50);
     this.setState({
       articles: parseData.articles,
       totalResults: parseData.totalResults,
       loading: false,
       // category: this.props.category
     });
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
     this.updateNews();
-  }
-  componentDidUpdate(prevProps) {
-    // this.setState({ category: this.props.category });
-    if (prevProps.category !== this.state.category) {
-      this.setState({ category: this.props.category });
-    }
   }
 
   fetchMoreData = async () => {
